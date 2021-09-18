@@ -1,0 +1,12 @@
+.field__input {
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+}
+
+.dialog__action {
+  display: flex;
+  justify-content: space-evenly;
+}

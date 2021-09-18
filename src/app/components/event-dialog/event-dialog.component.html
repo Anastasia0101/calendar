@@ -1,0 +1,14 @@
+<form [formGroup]="dialogForm">
+  <h1 mat-dialog-title>Create new event</h1>
+  <div mat-dialog-content class="dialog__field field">
+    <mat-form-field appearance="fill" class="field__input">
+      <mat-label>Title:</mat-label>
+      <input matInput class="input" formControlName="title">
+    </mat-form-field>
+    <p>{{data.start}}</p>
+  </div>
+  <div mat-dialog-actions class="dialog__action">
+    <button mat-button (click)="createEvent()">Create</button>
+    <button mat-button (click)="closeDialog()" cdkFocusInitial>Close</button>
+  </div>
+</form>

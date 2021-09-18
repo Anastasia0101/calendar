@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CalendarEvent, CalendarView } from 'angular-calendar';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { startOfDay } from 'date-fns';
+import { EventDialogComponent } from '../event-dialog/event-dialog.component';
 
 @Component({
   selector: 'app-calendar',
@@ -21,8 +23,10 @@ export class CalendarComponent {
   ]
 
   viewDate: Date = new Date();
-  view: CalendarView = CalendarView.Month;
+  view: CalendarView = CalendarView.Week;
   CalendarView = CalendarView;
+
+  constructor(public dialog: MatDialog) { }
 
   setView(view: CalendarView): void {
     this.view = view;
@@ -33,6 +37,21 @@ export class CalendarComponent {
   }
 
   onEventClick(data: CalendarEvent): void {
-    console.log(data.title);
+    console.log(data.start);
+  }
+
+  openDialogEvent(date: Date): void {
+    console.log(date);
+    const dialogRef = this.dialog.open(EventDialogComponent, {
+      width: '400px',
+      data: { start: date }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(result);
+      this.events.push({start: date, title: result});
+      console.log(this.events);
+    });
   }
 }
