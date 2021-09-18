@@ -8,7 +8,7 @@ import { CalendarEvent } from 'angular-calendar';
   templateUrl: './event-dialog.component.html',
   styleUrls: ['./event-dialog.component.css']
 })
-export class EventDialogComponent implements OnInit {
+export class EventDialogComponent {
 
   dialogForm: FormGroup;
 
@@ -22,15 +22,9 @@ export class EventDialogComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    console.log(this.data);
-  }
-
   createEvent(): void {
     const title = this.dialogForm.value.title;
     this.dialogRef.close(title);
-    console.log('fkkd')
-    console.log(this.dialogForm.value.title);
   }
 
   closeDialog(): void {

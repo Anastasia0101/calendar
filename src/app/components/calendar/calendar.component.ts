@@ -32,26 +32,15 @@ export class CalendarComponent {
     this.view = view;
   }
 
-  dayClicked(date: any): void {
-    console.log(date);
-  }
-
-  onEventClick(data: CalendarEvent): void {
-    console.log(data.start);
-  }
-
-  openDialogEvent(date: Date): void {
-    console.log(date);
+  openDialogCreateEvent(date: Date): void {
     const dialogRef = this.dialog.open(EventDialogComponent, {
       width: '400px',
       data: { start: date }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      console.log(result);
+      if (!result) return;
       this.events.push({start: date, title: result});
-      console.log(this.events);
     });
   }
 }

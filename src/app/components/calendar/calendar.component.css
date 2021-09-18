@@ -1,0 +1,8 @@
+.col-md-4 {
+  width: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-evenly;
+}
